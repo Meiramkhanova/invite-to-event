@@ -56,9 +56,41 @@ function RSVPContent() {
     setShowForm(true);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+
+    const dbStatus = rsvpStatus === "attending" ? "Приду" : "Не приду";
+
+    try {
+      const response = await fetch(
+        "https://akzdooeilllsmmxtikpm.supabase.co/rest/v1/guests",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            apikey: "sb_publishable_d0tpR7SPWuwm7KY0_CLSoQ__SkiWjAu",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFremRvb2VpbGxsc21teHRpa3BtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg4MzAwMjcsImV4cCI6MjA5NDQwNjAyN30.q57bTTOa1p1pgTvX2AOd6KBzyvSeJ3oO4iDB_lVDgSo",
+            Prefer: "return=minimal",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            status: dbStatus,
+            message: formData.wishes || "", // Пожелание (если пустое, отправится пустая строка)
+          }),
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error("Кате кетті / Ошибка при отправке данных");
+      }
+
+      // Если запрос успешный, переключаем экран на SuccessScreen
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error("Ошибка Supabase:", error);
+      alert("Деректерді жіберу мүмкін болмады. Қайта байқап көріңіз.");
+    }
   };
 
   const handleBack = () => {
