@@ -12,10 +12,19 @@ export function AudioPlayer() {
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
+        setIsPlaying(false);
       } else {
-        audioRef.current.play();
+        // Добавляем .then() и .catch(), чтобы браузер не блокировал поток
+        audioRef.current
+          .play()
+          .then(() => {
+            setIsPlaying(true);
+          })
+          .catch((error) => {
+            console.error("Ошибка воспроизведения аудио:", error);
+            alert("Пожалуйста, убедитесь, что звук на устройстве включен.");
+          });
       }
-      setIsPlaying(!isPlaying);
     }
   };
 
