@@ -10,6 +10,7 @@ import {
   InteractiveFlower,
   FloralDecoration,
 } from "@/components/interactive-flower";
+import Image from "next/image";
 
 // Wedding details configuration
 const WEDDING_CONFIG = {
@@ -148,7 +149,7 @@ function HeroSection({ config }: { config: typeof WEDDING_CONFIG }) {
         <motion.p
           variants={fadeInUp}
           className="text-muted-foreground uppercase tracking-[0.3em] text-sm mb-4">
-          Той шақыруы
+          Үйлену тойға шақыру
         </motion.p>
 
         <motion.div variants={fadeInUp} className="mb-8">
@@ -229,11 +230,19 @@ function PhotoSection() {
   return (
     <section className="relative h-[60vh] md:h-[70vh] overflow-hidden">
       <div className="absolute inset-0 bg-linear-to-b from-card via-transparent to-background z-10" />
-      <img
+      {/* <img
         src="https://img.freepik.com/premium-photo/elegant-black-white-wedding-photo-background-minimalist-design_1287624-51742.jpg"
         alt="Wedding rings"
         className="w-full h-full object-cover object-center grayscale"
+      /> */}
+      <Image
+        src="/image-wedding.png"
+        className="w-full h-full object-cover object-center"
+        alt="wedding"
+        width={430}
+        height={500}
       />
+
       <div className="absolute inset-0 bg-linear-to-t from-background via-transparent to-transparent z-10" />
     </section>
   );
@@ -471,7 +480,9 @@ function LocationSection({ config }: { config: typeof WEDDING_CONFIG }) {
           <p className="font-serif text-xl italic text-muted-foreground mb-2">
             мейрамханасы
           </p>
-          <p className="uppercase tracking-widest text-foreground">
+          <p
+            className="uppercase tracking-widest text-lg text-foreground normal-nums"
+            style={{ fontFeatureSettings: '"lnum" 1, "onum" 0' }}>
             {config.address}
           </p>
 
@@ -481,6 +492,7 @@ function LocationSection({ config }: { config: typeof WEDDING_CONFIG }) {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
+            style={{ fontFeatureSettings: '"lnum" 1, "onum" 0' }}
             className="inline-flex items-center gap-2 mt-8 bg-primary text-primary-foreground px-6 py-3 rounded-full">
             <ExternalLink className="w-4 h-4" />
             2GIS-те көру
