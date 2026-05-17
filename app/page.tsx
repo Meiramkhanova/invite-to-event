@@ -13,13 +13,13 @@ import {
 
 // Wedding details configuration
 const WEDDING_CONFIG = {
-  date: new Date("2025-10-11T17:00:00"),
-  groom: "Бекзат",
-  bride: "Гүлсая",
-  groomParents: "Молдахан & Жамал",
-  venue: "ЖҰЛДЫЗ",
-  address: "ЖАНСҮГҮРОВА 112 А",
-  city: "Алматы облысы Өтеген батыр ауылы",
+  date: new Date("2026-08-16T17:00:00"),
+  groom: "Асланбек",
+  bride: "Қасиет",
+  groomParents: "Ерлан & Жанар",
+  venue: "Dostyk Рalase",
+  address: " Аэропортная 29Б",
+  city: "Алматы",
 };
 
 // Animation variants
@@ -212,7 +212,7 @@ function InvitationSection({ config }: { config: typeof WEDDING_CONFIG }) {
           </p>
           <p className="text-lg">пен келініміз</p>
           <p className="font-serif text-4xl md:text-5xl italic text-foreground my-4">
-            {config.bride}ның
+            {config.bride}тің
           </p>
           <p className="uppercase tracking-wide text-sm mt-6">
             Үйлену тойына арналған салтанатты ақ дастарханымыздың қадірлі қонағы
@@ -287,14 +287,14 @@ function DateSection() {
             Той күні
           </p>
           <p className="uppercase tracking-widest text-sm text-muted-foreground mb-2">
-            Сенбі
+            Жексенбі
           </p>
           <motion.p
             variants={scaleIn}
             className="text-7xl md:text-8xl font-light text-foreground mb-2 font-serif">
-            11
+            16
           </motion.p>
-          <p className="text-xl italic text-foreground mb-4">Қазан 2025</p>
+          <p className="text-xl italic text-foreground mb-4">Тамыз 2026</p>
           <p className="text-3xl font-light text-foreground">17:00</p>
         </motion.div>
       </motion.div>
@@ -325,7 +325,7 @@ function CalendarSection() {
           <FloralDecoration position="bottom-left" />
 
           <h3 className="font-serif text-3xl italic text-center text-foreground mb-2">
-            Қазан 2025
+            Тамыз 2026
           </h3>
           <p className="text-center text-muted-foreground text-sm mb-6">
             Күнтізбе
@@ -343,13 +343,13 @@ function CalendarSection() {
 
           <div className="grid grid-cols-7 gap-2 text-center">
             {/* Empty cells for October 2025 start (Wednesday) */}
-            {[...Array(2)].map((_, i) => (
+            {[...Array(5)].map((_, i) => (
               <div key={`empty-${i}`} className="py-2" />
             ))}
             {/* Calendar days */}
             {[...Array(31)].map((_, i) => {
               const day = i + 1;
-              const isWeddingDay = day === 11;
+              const isWeddingDay = day === 16;
               return (
                 <motion.div
                   key={day}
@@ -369,7 +369,7 @@ function CalendarSection() {
             variants={fadeInUp}
             className="mt-8 p-4 border border-border rounded-2xl text-center">
             <p className="font-serif text-2xl italic text-foreground">
-              11 Қазан
+              16 Тамыз
             </p>
           </motion.div>
         </motion.div>
@@ -464,9 +464,7 @@ function LocationSection({ config }: { config: typeof WEDDING_CONFIG }) {
           <p className="font-serif text-xl italic text-foreground mb-4">
             {config.city}
           </p>
-          <p className="font-serif text-2xl italic text-foreground mb-2">
-            батыр ауылы
-          </p>
+
           <h3 className="font-serif text-4xl md:text-5xl italic text-foreground mb-4">
             {`"${config.venue}"`}
           </h3>
@@ -478,7 +476,7 @@ function LocationSection({ config }: { config: typeof WEDDING_CONFIG }) {
           </p>
 
           <motion.a
-            href="https://2gis.kz"
+            href="https://go.2gis.com/3qPtP"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.02 }}
