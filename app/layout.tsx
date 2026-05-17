@@ -19,7 +19,7 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Той шақыруы | Асланбек & Қасиет",
+  title: "Үйлену тойға шақыру | Асланбек & Қасиет",
   description: "Біздің үйлену тойына шақырамыз",
   generator: "v0.app",
 };
